@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#38563f">
+  <meta name="description" content="奥へ爆走するダンゴムシを左右にスライド！危ないときは『まるまる』でガードする無限ランゲーム。">
+  <title>爆走！ダンゴムシロード | ONE TAKE GAME #008</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./game.js" defer></script>
+</head>
+<body>
+  <main class="game-shell" id="gameShell" aria-label="爆走！ダンゴムシロード">
+    <canvas id="game" aria-label="ダンゴムシが土の道を走るゲーム画面。画面を左右にドラッグして移動します"></canvas>
+    <div class="ambient" aria-hidden="true"></div>
+    <header id="hud" class="hud hidden" aria-live="off">
+      <div class="readout"><span class="readout-label">DISTANCE</span><strong><span id="distance">0</span><small> m</small></strong></div>
+      <div class="readout readout-right"><span class="readout-label">BEST</span><strong><span id="best">0</span><small> m</small></strong></div>
+    </header>
+    <button id="soundButton" class="sound-button" type="button" aria-label="効果音をミュート" title="効果音 ON / OFF">♪</button>
+    <div id="newBest" class="new-best hidden" role="status">NEW BEST!</div>
+    <div id="slideHint" class="slide-hint hidden" aria-hidden="true">← 左右にスライド →</div>
+    <div id="rollHint" class="roll-hint hidden" aria-hidden="true">危ない時はここ！ ↓</div>
+    <div id="rollWrap" class="roll-wrap hidden">
+      <button type="button" id="rollButton" class="roll-button" aria-label="まるまるで防御する" style="--charge:1">
+        <span class="roll-symbol" aria-hidden="true">◉</span>
+        <span class="roll-name">まるまる</span>
+        <span class="roll-status" id="rollStatus">READY!</span>
+      </button>
+    </div>
+    <section id="titleScreen" class="screen title-screen" aria-labelledby="gameTitle">
+      <div class="title-card">
+        <div class="series-label">ONE TAKE GAME <span>#008</span></div>
+        <div class="title-mark" aria-hidden="true">✦　✦　✦</div>
+        <h1 id="gameTitle"><span>爆走！</span><span>ダンゴムシロード</span></h1>
+        <p class="roman-title">DangoMushiRoad</p>
+        <div class="mini-divider" aria-hidden="true"></div>
+        <p class="how-to">左右にスライドして避けろ！<br>危ない時は <b>「まるまる」</b>！</p>
+        <button type="button" class="primary-button" id="startButton">爆走スタート！ <span aria-hidden="true">→</span></button>
+        <p class="title-foot">どこまで走れる？　距離がスコア！</p>
+      </div>
+    </section>
+    <section id="gameOverScreen" class="screen game-over-screen hidden" aria-labelledby="overTitle">
+      <div class="over-card">
+        <div class="over-eyebrow">おっと、ひっくり返った！</div>
+        <h2 id="overTitle">GAME OVER</h2>
+        <div class="over-distance"><span id="finalDistance">0</span><small> m</small></div>
+        <div class="over-best">BEST <strong id="finalBest">0</strong> m</div>
+        <p id="overMessage" class="over-message">もう一度、爆走しよう！</p>
+        <button type="button" class="primary-button" id="retryButton">もう一度 <span aria-hidden="true">↻</span></button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
